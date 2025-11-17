@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class PlayerStateBase
 {
-    public virtual void Enter() { }
+    public abstract void Enter();
     public virtual void Exit() { }
     public virtual void ProcessInput() { }
-    public abstract void Update();
+    public virtual void Update() { }
 }

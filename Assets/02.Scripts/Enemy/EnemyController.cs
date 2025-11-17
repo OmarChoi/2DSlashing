@@ -11,6 +11,8 @@ public enum EEnemyState
 
 public class EnemyController : MonoBehaviour
 {
+    public EnemyStatData StatData;
+
     private GameObject _player;
     public GameObject Player => _player;
 
@@ -23,8 +25,8 @@ public class EnemyController : MonoBehaviour
     private EEnemyState _currentState = EEnemyState.Move;
     private Dictionary<EEnemyState, EnemyStateBase> _stateDictionary;
 
-    [SerializeField] private MonsterAttackRange _attackRange;
-    public bool ReachToTarget => _attackRange.PlayerInRange;
+    [SerializeField] private EnemyAttack _attack;
+    public bool PlayerInRange => _attack.PlayerInRange;
 
     private void Awake()
     {
@@ -50,8 +52,6 @@ public class EnemyController : MonoBehaviour
         _stateDictionary[_currentState].Enter();
     }
 
-    public void OnAnimationEnd()
-    {
-        ChangeState(EEnemyState.Move);
-    }
+    public void OnAnimationEnd() => ChangeState(EEnemyState.Move);
+    public void OnAttack() => _attack.ApplyDamage(StatData.Damage);
 }

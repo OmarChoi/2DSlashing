@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a009ba7c30f713c4daa158c5b39bb306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 10
 --- !u!1 &7652525611132323680
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,4 +291,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6096c5a499e92914596b79d62769aea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: {fileID: 2742244867582314877}
+  StatData: {fileID: 11400000, guid: 5a07c39683db0f1468264fae890f6e2c, type: 2}
+  _attack: {fileID: 2742244867582314877}

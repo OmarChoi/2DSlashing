@@ -9,11 +9,6 @@ public class IdleState : PlayerStateBase
         _controller = controller;
     }
 
-    public override void Update()
-    {
-        // 일정 시간 지나면 Idle2 애니메이션 실행
-    }
-
     public override void ProcessInput()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -34,5 +29,10 @@ public class IdleState : PlayerStateBase
             _controller.ChangeState(EPlayerState.Move);
             return;
         }
+    }
+
+    public override void Enter()
+    {
+
     }
 }

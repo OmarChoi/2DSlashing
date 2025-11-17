@@ -13,9 +13,4 @@ public class AttackState : PlayerStateBase
     {
         _controller.PlayerAnimator.SetTrigger("MiddleAttack");
     }
-
-    public override void Update()
-    {
-        // 범위 안에 존재하는 적에게 데미지 적용
-    }
 }
