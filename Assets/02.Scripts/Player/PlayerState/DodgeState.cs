@@ -1,12 +1,11 @@
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class DodgeState : PlayerStateBase
 {
     private PlayerController _controller = null;
-    private float _dodgeSpeed = 8.0f;
-    private float _minX = -8.0f;
-    private float _maxX = 8.0f;
+    private readonly float _dodgeSpeed = 8.0f;
+    private readonly float _minX = -8.0f;
+    private readonly float _maxX = 8.0f;
 
     public DodgeState(PlayerController controller)
     {

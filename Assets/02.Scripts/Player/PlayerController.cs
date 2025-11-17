@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
+using System.Collections.Generic;
 
 public enum EPlayerState
 {
@@ -14,14 +12,14 @@ public enum EPlayerState
 
 public class PlayerController : MonoBehaviour
 {
-    private Animator _animator = null;
+    private Animator _animator;
     public Animator PlayerAnimator => _animator;
 
-    private SpriteRenderer _renderer = null;
+    private SpriteRenderer _renderer;
     public SpriteRenderer PlayerRenderer => _renderer;
 
     private EPlayerState _currentState = EPlayerState.Idle;
-    private Dictionary<EPlayerState, PlayerStateBase> _stateDictionary = new Dictionary<EPlayerState, PlayerStateBase>();
+    private Dictionary<EPlayerState, PlayerStateBase> _stateDictionary;
 
     public Vector2 Direction = Vector2.right;
 
@@ -40,8 +38,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        _stateDictionary[_currentState].ProcessInput();
-        _stateDictionary[_currentState].Update();
+        PlayerStateBase currentState = _stateDictionary[_currentState];
+        currentState.ProcessInput();
+        currentState.Update();
     }
 
     public void ChangeState(EPlayerState nextState)

@@ -1,13 +1,11 @@
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.UIElements;
 
 public class MoveState : PlayerStateBase
 {
     private PlayerController _controller;
-    private float _speed = 5.0f;
-    private float _minX = -8.0f;
-    private float _maxX = 8.0f;
+    private readonly float _speed = 5.0f;
+    private readonly float _minX = -8.0f;
+    private readonly float _maxX = 8.0f;
 
     public MoveState(PlayerController controller)
     {
@@ -64,12 +62,12 @@ public class MoveState : PlayerStateBase
         if (horizontalMovement < 0f)
         {
             _controller.PlayerRenderer.flipX = true;
-            _controller.Direction = Vector3.left;
+            _controller.Direction = Vector2.left;
         }
         else
         {
             _controller.PlayerRenderer.flipX = false;
-            _controller.Direction = Vector3.right;
+            _controller.Direction = Vector2.right;
         }
     }
 }
