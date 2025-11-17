@@ -49,7 +49,7 @@ public class MoveState : PlayerStateBase
         Vector2 nextPosition = currentPosition + _controller.Direction * _speed * Time.deltaTime;
         if (nextPosition.x > _maxX)
         {
-            BackgroundScoller.Instance.UpdateBackground(Vector2.right);
+            BackgroundScroller.Instance.UpdateBackground(Vector2.right);
         }
         nextPosition.x = Mathf.Clamp(nextPosition.x, _minX, _maxX);
         _controller.gameObject.transform.position = nextPosition;

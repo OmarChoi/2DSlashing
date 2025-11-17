@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class BackgroundScoller : MonoBehaviour
+public class BackgroundScroller : MonoBehaviour
 {
-    private static BackgroundScoller _instance;
-    public static BackgroundScoller Instance => _instance;
+    private static BackgroundScroller _instance;
+    public static BackgroundScroller Instance => _instance;
 
     [SerializeField] private GameObject[] _backgrounds;
     private BackgroundScroll[] _scrolls;
