@@ -175,13 +175,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc1269973e79e249ad3b5d2f511b879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backgrounds:
-  - {fileID: 432464081}
-  - {fileID: 259662140}
-  - {fileID: 911024230}
-  - {fileID: 2071833320}
-  - {fileID: 801298842}
-  - {fileID: 1056147902}
+  _backgroundScrolls:
+  - {fileID: 432464085}
+  - {fileID: 259662144}
+  - {fileID: 911024234}
+  - {fileID: 2071833324}
+  - {fileID: 801298846}
+  - {fileID: 1056147906}
 --- !u!1 &259662140
 GameObject:
   m_ObjectHideFlags: 0

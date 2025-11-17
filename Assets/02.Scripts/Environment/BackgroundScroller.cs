@@ -5,8 +5,7 @@ public class BackgroundScroller : MonoBehaviour
     private static BackgroundScroller _instance;
     public static BackgroundScroller Instance => _instance;
 
-    [SerializeField] private GameObject[] _backgrounds;
-    private BackgroundScroll[] _scrolls;
+    [SerializeField] private BackgroundScroll[] _backgroundScrolls;
 
     private void Awake()
     {
@@ -16,21 +15,11 @@ public class BackgroundScroller : MonoBehaviour
             return;
         }
         _instance = this;
-        SetBackgroundScrolls();
-    }
-
-    private void SetBackgroundScrolls()
-    {
-        _scrolls = new BackgroundScroll[_backgrounds.Length];
-        for(int i = 0; i < _backgrounds.Length; i++)
-        {
-            _scrolls[i] = _backgrounds[i].GetComponent<BackgroundScroll>();
-        }
     }
 
     public void UpdateBackground(Vector2 direction)
     {
-        foreach (var scroll in _scrolls)
+        foreach (var scroll in _backgroundScrolls)
         {
             scroll.UpdateOffset(direction);
         }
