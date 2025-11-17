@@ -3,7 +3,7 @@ using UnityEngine;
 public class MoveState : PlayerStateBase
 {
     private PlayerController _controller;
-    private readonly float _speed = 5.0f;
+    private readonly float _speed = 8.0f;
     private readonly float _minX = -8.0f;
     private readonly float _maxX = 8.0f;
 
@@ -47,6 +47,10 @@ public class MoveState : PlayerStateBase
     {
         Vector2 currentPosition = _controller.gameObject.transform.position;
         Vector2 nextPosition = currentPosition + _controller.Direction * _speed * Time.deltaTime;
+        if (nextPosition.x > _maxX)
+        {
+            BackgroundScoller.Instance.UpdateBackground(Vector2.right);
+        }
         nextPosition.x = Mathf.Clamp(nextPosition.x, _minX, _maxX);
         _controller.gameObject.transform.position = nextPosition;
     }
