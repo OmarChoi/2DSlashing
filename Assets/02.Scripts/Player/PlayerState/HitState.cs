@@ -7,5 +7,6 @@ public class HitState : PlayerStateBase
     public override void Enter()
     {
         _controller.PlayerAnimator.SetTrigger("Hit");
+        ScoreManager.Instance.ResetCombo();
     }
 }

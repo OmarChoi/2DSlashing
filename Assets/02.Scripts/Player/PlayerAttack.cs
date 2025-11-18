@@ -35,6 +35,7 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider2D target in destroyList)
         {
             Destroy(target.gameObject);
+            ScoreManager.Instance.AddScore();
         }
     }
 }
