@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6e1fd30703c6549a8d1134e694cec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spinSpeed: 1080
+  _spinSpeed: 720
 --- !u!114 &6570684233166711631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029adc82d15f1f846ad21af61ea273fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 10
+  _moveSpeed: 4
 --- !u!96 &1563972364339468648
 TrailRenderer:
   serializedVersion: 3

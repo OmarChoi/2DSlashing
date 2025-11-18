@@ -13,6 +13,13 @@ public enum EPlayerState
     Die
 }
 
+[System.Serializable]
+public struct AttackInfo
+{
+    public EPlayerState State;
+    public PlayerAttack AttackRange;
+}
+
 public class PlayerController : MonoBehaviour
 {
     private Animator _animator;
@@ -21,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private EPlayerState _currentState = EPlayerState.Move;
     public EPlayerState CurrentState => _currentState;
     private Dictionary<EPlayerState, PlayerStateBase> _stateDictionary;
-
+    [SerializeField] private AttackInfo[] _attackInfos;
     public Vector2 Direction = Vector2.right;
 
     public bool CanTakeDamage = true;
@@ -61,5 +68,11 @@ public class PlayerController : MonoBehaviour
     public void OnAnimationEnd()
     {
         ChangeState(EPlayerState.Move);
+    }
+
+    public void OnAttack()
+    {
+        AttackInfo attackInfo = System.Array.Find(_attackInfos, info => info.State == _currentState);
+        attackInfo.AttackRange.DoAttack();
     }
 }
