@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fb69e3f26a12a4e93bdf905a4f9e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _effectObject: {fileID: 4505698150427737537, guid: 61e3d89a2e45f7e4d8992e1681bed803, type: 3}
 --- !u!61 &52368379
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1842,6 +1843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fb69e3f26a12a4e93bdf905a4f9e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _effectObject: {fileID: 4136778614102780844, guid: 85d660e217e346c479ec132860f3bb3e, type: 3}
 --- !u!61 &1494975831
 BoxCollider2D:
   m_ObjectHideFlags: 0

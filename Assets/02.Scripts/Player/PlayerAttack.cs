@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class PlayerAttack : MonoBehaviour
 {
     List<Collider2D> _hitColliders = new List<Collider2D>();
+    [SerializeField] private GameObject _effectObject;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void DoAttack()
     {
+        Instantiate(_effectObject, this.transform);
         List<Collider2D> destroyList = new List<Collider2D>();
         for (int i = _hitColliders.Count - 1; i >= 0; --i)
         {
