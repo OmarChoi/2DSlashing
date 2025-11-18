@@ -7,7 +7,7 @@ public class WeaponAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") == false) return;
-        other.GetComponent<IDamageable>()?.TakeDamage(_damage);
+        if (other.GetComponent<IDamageable>()?.TakeDamage(_damage) == false) return;
         Destroy(gameObject);
     }
 }

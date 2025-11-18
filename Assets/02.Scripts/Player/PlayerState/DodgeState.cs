@@ -7,11 +7,11 @@ public class DodgeState : PlayerStateBase
     public override void Enter()
     {
         _controller.PlayerAnimator.SetTrigger("Dodge");
-        _controller.CanTakeDamage = true;
+        _controller.CanTakeDamage = false;
     }
 
     public override void Exit()
     {
-        _controller.CanTakeDamage = false;
+        _controller.CanTakeDamage = true;
     }
 }

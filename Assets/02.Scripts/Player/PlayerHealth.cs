@@ -12,15 +12,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         _currentHealth = _maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public bool TakeDamage(float damage)
     {
-        if (_controller.CanTakeDamage == true) return;
-        if (_controller.CurrentState == EPlayerState.Die) return;
+        if (_controller.CanTakeDamage == false) return false;
+        if (_controller.CurrentState == EPlayerState.Die) return false;
         _currentHealth -= damage;
         _controller.OnHit();
         if (_currentHealth < 0)
         {
             _controller.OnDie();
         }
+        return true;
     }
 }

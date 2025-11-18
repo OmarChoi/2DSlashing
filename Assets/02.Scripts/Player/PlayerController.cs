@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 Direction = Vector2.right;
 
-    public bool CanTakeDamage = false;
+    public bool CanTakeDamage = true;
 
     private void Awake()
     {
