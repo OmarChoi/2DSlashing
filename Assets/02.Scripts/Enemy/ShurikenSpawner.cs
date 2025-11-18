@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class ShurikenSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _enemyPrefabs;
-    private float _spawnInterval = 5.0f;
+    private float _spawnInterval = 3.0f;
+    private float _spawnCoolTime = 0.0f;
     private int[] _spawnWeights = { 200, 100 };
     private int _totalWeight = 0;
 
@@ -17,11 +18,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        _spawnInterval -= Time.deltaTime;
-        if (_spawnInterval <= 0)
+        _spawnCoolTime -= Time.deltaTime;
+        if (_spawnCoolTime <= 0)
         {
             SpawnEnemy();
-            _spawnInterval = 2.0f;
+            _spawnCoolTime = _spawnInterval;
         }
     }
 

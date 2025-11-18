@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4108292601245849218}
   - component: {fileID: 4081971903445520138}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: ShurikenSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 5572213790675809466, guid: 0ab3789bbecc9184f96d51bd6da42e0e, type: 3}
-  - {fileID: 7652525611132323680, guid: 1c51536ca5d2cdb45aff2ceed50aebc7, type: 3}
+  - {fileID: 5387539013045398409, guid: 3bc3f7b5523474e45a2cd331773e636b, type: 3}
+  - {fileID: 7992876774979747096, guid: a8f1060c9f3c3de43b525ec096253434, type: 3}
