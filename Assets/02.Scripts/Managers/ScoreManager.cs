@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -7,10 +8,14 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance => _instance;
     private int _score = 0;
     private int _combo = 0;
+    public int Combo => _combo;
     private readonly int _point = 100;
     [SerializeField] private Text _scoreTextUI;
     [SerializeField] private Text _comboTextUI;
 
+    private Tweener _punchTween;
+    private float _punchDuration = 0.1f;
+    private float _punchSize = 1.5f;
 
     private void Awake()
     {
@@ -22,6 +27,15 @@ public class ScoreManager : MonoBehaviour
         _instance = this;
         RefreshScore();
         RefreshCombo();
+        SetEffect();
+    }
+
+    private void SetEffect()
+    {
+        _punchTween = _comboTextUI.transform
+            .DOShakeScale(_punchDuration, _punchSize)
+            .SetAutoKill(false)
+            .Pause();
     }
 
     private void RefreshScore()
@@ -40,11 +54,13 @@ public class ScoreManager : MonoBehaviour
         int totalPoints = _point * _combo;
         _score += totalPoints;
         RefreshScore();
+        _punchTween.Restart();
         RefreshCombo();
     }
 
     public void ResetCombo()
     {
         _combo = 0;
+        RefreshCombo();
     }
 }
