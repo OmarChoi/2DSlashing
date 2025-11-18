@@ -6,7 +6,8 @@ public enum EPlayerState
 {
     Idle,
     Move,
-    Attack,
+    MiddleAttack,
+    HighAttack,
     Dodge,
     Hit,
     Die
@@ -17,10 +18,7 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     public Animator PlayerAnimator => _animator;
 
-    private SpriteRenderer _renderer;
-    public SpriteRenderer PlayerRenderer => _renderer;
-
-    private EPlayerState _currentState = EPlayerState.Idle;
+    private EPlayerState _currentState = EPlayerState.Move;
     public EPlayerState CurrentState => _currentState;
     private Dictionary<EPlayerState, PlayerStateBase> _stateDictionary;
 
@@ -31,12 +29,11 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _renderer = GetComponent<SpriteRenderer>();
         _stateDictionary = new Dictionary<EPlayerState, PlayerStateBase>
         {
-            { EPlayerState.Idle,   new IdleState(this) },
             { EPlayerState.Move,   new MoveState(this) },
-            { EPlayerState.Attack, new AttackState(this) },
+            { EPlayerState.MiddleAttack, new MiddleAttackState(this) },
+            { EPlayerState.HighAttack, new HighAttackState(this) },
             { EPlayerState.Dodge,  new DodgeState(this) },
             { EPlayerState.Hit,  new HitState(this) },
             { EPlayerState.Die,  new DieState(this) },
@@ -63,6 +60,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnAnimationEnd()
     {
-        ChangeState(EPlayerState.Idle);
+        ChangeState(EPlayerState.Move);
     }
 }

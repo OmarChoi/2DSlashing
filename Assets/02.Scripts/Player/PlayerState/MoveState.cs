@@ -2,30 +2,13 @@ using UnityEngine;
 
 public class MoveState : PlayerStateBase
 {
-    private PlayerController _controller;
-    private readonly float _speed = 8.0f;
-    private readonly float _minX = -8.0f;
-    private readonly float _maxX = 8.0f;
+    private Vector2 _direction = Vector2.right;
 
-    public MoveState(PlayerController controller)
-    {
-        _controller = controller;
-    }
-
-    public override void Enter()
-    {
-        _controller.PlayerAnimator.SetBool("IsMove", true);
-    }
-
-    public override void Exit()
-    {
-        _controller.PlayerAnimator.SetBool("IsMove", false);
-    }
+    public MoveState(PlayerController controller) : base(controller) { }
 
     public override void Update()
     {
-        SetDirection();
-        UpdatePosition();
+        BackgroundScroller.Instance.UpdateBackground(_direction * _speed);
     }
 
     public override void ProcessInput()
@@ -35,43 +18,15 @@ public class MoveState : PlayerStateBase
             _controller.ChangeState(EPlayerState.Dodge);
             return;
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Z))
         {
-            _controller.ChangeState(EPlayerState.Attack);
+            _controller.ChangeState(EPlayerState.MiddleAttack);
             return;
         }
-    }
-
-    private void UpdatePosition()
-    {
-        Vector2 currentPosition = _controller.gameObject.transform.position;
-        Vector2 nextPosition = currentPosition + _controller.Direction * _speed * Time.deltaTime;
-        if (nextPosition.x > _maxX)
+        else if (Input.GetKeyDown(KeyCode.X))
         {
-            BackgroundScroller.Instance.UpdateBackground(Vector2.right);
-        }
-        nextPosition.x = Mathf.Clamp(nextPosition.x, _minX, _maxX);
-        _controller.gameObject.transform.position = nextPosition;
-    }
-
-    private void SetDirection()
-    {
-        float horizontalMovement = Input.GetAxisRaw("Horizontal");
-        if (Mathf.Abs(horizontalMovement) < float.Epsilon)
-        {
-            _controller.ChangeState(EPlayerState.Idle);
+            _controller.ChangeState(EPlayerState.HighAttack);
             return;
-        }
-        if (horizontalMovement < 0f)
-        {
-            _controller.PlayerRenderer.flipX = true;
-            _controller.Direction = Vector2.left;
-        }
-        else
-        {
-            _controller.PlayerRenderer.flipX = false;
-            _controller.Direction = Vector2.right;
         }
     }
 }

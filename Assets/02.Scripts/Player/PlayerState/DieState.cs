@@ -2,12 +2,7 @@ using UnityEngine;
 
 public class DieState : PlayerStateBase
 {
-    private PlayerController _controller = null;
-
-    public DieState(PlayerController controller)
-    {
-        _controller = controller;
-    }
+    public DieState(PlayerController controller) : base(controller) { }
 
     public override void Enter()
     {
