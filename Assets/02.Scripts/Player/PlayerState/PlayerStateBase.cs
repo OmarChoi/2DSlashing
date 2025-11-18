@@ -3,8 +3,6 @@ using UnityEngine;
 public abstract class PlayerStateBase
 {
     protected PlayerController _controller;
-    protected float _speed = 0.5f;
-    protected float _defaultSpeed = 1.0f;
 
     public PlayerStateBase(PlayerController controller)
     {
