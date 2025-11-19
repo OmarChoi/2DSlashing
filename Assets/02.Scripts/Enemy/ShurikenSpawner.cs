@@ -4,7 +4,7 @@ public class ShurikenSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _enemyPrefabs;
     private float _spawnInterval = 3.0f;
-    private float _spawnCoolTime = 0.0f;
+    private float _spawnCoolTime = 2.0f;
     private int[] _spawnWeights = { 200, 100 };
     private int _totalWeight = 0;
 
@@ -21,7 +21,12 @@ public class ShurikenSpawner : MonoBehaviour
         _spawnCoolTime -= Time.deltaTime;
         if (_spawnCoolTime <= 0)
         {
-            SpawnEnemy();
+            int currentCombo = ScoreManager.Instance.Combo;
+            int comboWeight = currentCombo / 10 + 1;
+            for(int i  = 0; i < comboWeight; i++)
+            {
+                SpawnEnemy();
+            }
             _spawnCoolTime = _spawnInterval;
         }
     }

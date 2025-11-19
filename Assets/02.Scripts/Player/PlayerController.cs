@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEngine.UI;
 using UnityEngine;
 
 public enum EPlayerState
@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 Direction = Vector2.right;
 
     public bool CanTakeDamage = true;
+
+    [SerializeField] protected Image _gameOverUI;
 
     private void Awake()
     {
@@ -74,5 +76,10 @@ public class PlayerController : MonoBehaviour
     {
         AttackInfo attackInfo = System.Array.Find(_attackInfos, info => info.State == _currentState);
         attackInfo.AttackRange.DoAttack();
+    }
+
+    public void ActiveGameOverUI()
+    {
+        _gameOverUI.gameObject.SetActive(true);
     }
 }

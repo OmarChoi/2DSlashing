@@ -8,7 +8,9 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance => _instance;
     private int _score = 0;
     private int _combo = 0;
+    private int _maxCombo = 0;
     public int Combo => _combo;
+    public int Score => _score;
     private readonly int _point = 100;
     [SerializeField] private Text _scoreTextUI;
     [SerializeField] private Text _comboTextUI;
@@ -60,7 +62,17 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetCombo()
     {
+        if (_combo > _maxCombo)
+        {
+            _maxCombo = _combo;
+        }
         _combo = 0;
         RefreshCombo();
+    }
+
+    public int GetMaxCombo()
+    {
+        if (_combo > _maxCombo) return _combo;
+        return _maxCombo;
     }
 }
