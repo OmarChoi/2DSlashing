@@ -54,6 +54,15 @@ public class PlayerController : MonoBehaviour
         PlayerStateBase currentState = _stateDictionary[_currentState];
         currentState.ProcessInput();
         currentState.Update();
+        GetEscapeKey();
+    }
+
+    private void GetEscapeKey()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void ChangeState(EPlayerState nextState)

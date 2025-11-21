@@ -22,7 +22,7 @@ public class ShurikenSpawner : MonoBehaviour
         if (_spawnCoolTime <= 0)
         {
             int currentCombo = ScoreManager.Instance.Combo;
-            int comboWeight = currentCombo / 10 + 1;
+            int comboWeight = currentCombo / 5 + 1;
             for(int i  = 0; i < comboWeight; i++)
             {
                 SpawnEnemy();
